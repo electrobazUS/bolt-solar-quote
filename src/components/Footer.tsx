@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Phone, Mail, MapPin, ShieldCheck, Heart } from 'lucide-react';
+import { Sun, Phone, Mail, MapPin, ShieldCheck, Heart, ShoppingBag } from 'lucide-react';
 
 interface FooterProps {
   onScrollToCalculator: () => void;
@@ -48,6 +48,12 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToCalculator, onOpenQuot
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-2 text-slate-400">
+              <li>
+                <a href="#shop" className="text-amber-400 hover:text-white font-semibold transition-colors flex items-center gap-1">
+                  <ShoppingBag className="w-3.5 h-3.5" />
+                  Shop Solar & Batteries
+                </a>
+              </li>
               <li>
                 <button onClick={onScrollToCalculator} className="hover:text-white transition-colors">
                   Scottish Solar Calculator

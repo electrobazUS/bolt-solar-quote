@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sun, Phone, Menu, X, ShieldCheck, Zap, Award } from 'lucide-react';
+import { Sun, Phone, Menu, X, ShieldCheck, Zap, Award, ShoppingBag } from 'lucide-react';
 
 interface NavbarProps {
   onOpenQuoteModal: () => void;
@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, onScrollToCalc
           </a>
 
           {/* Compact Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-xs sm:text-[13px] font-semibold text-slate-700">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-5 text-xs sm:text-[13px] font-semibold text-slate-700">
             <button
               onClick={onScrollToCalculator}
               className="hover:text-scot-blue transition-colors flex items-center gap-1 py-1"
@@ -63,6 +63,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, onScrollToCalc
               <Zap className="w-3.5 h-3.5 text-amber-500" />
               Calculator
             </button>
+            <a href="#shop" className="hover:text-scot-blue transition-colors flex items-center gap-1 py-1 font-bold text-scot-blue">
+              <ShoppingBag className="w-3.5 h-3.5" />
+              Shop
+            </a>
             <a href="#grants" className="hover:text-scot-blue transition-colors flex items-center gap-1 py-1">
               <Award className="w-3.5 h-3.5 text-scot-blue" />
               Grants
@@ -84,8 +88,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, onScrollToCalc
             </a>
           </nav>
 
-          {/* Action CTA & Mobile Trigger */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Action Buttons & Mobile Menu Trigger */}
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            {/* Prominent Shop Button on Menu */}
+            <a
+              href="#shop"
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg border border-slate-300 hover:border-scot-blue hover:text-scot-blue text-slate-800 font-bold text-xs sm:text-sm transition-all bg-white shadow-sm hover:shadow"
+            >
+              <ShoppingBag className="w-3.5 h-3.5 text-scot-blue" />
+              <span>Shop</span>
+            </a>
+
+            {/* Free Quote Button */}
             <button
               onClick={onOpenQuoteModal}
               className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-sm hover:shadow text-xs sm:text-sm flex items-center gap-1.5 transition-all transform hover:-translate-y-0.5"
@@ -111,12 +125,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, onScrollToCalc
       {/* Compact Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-1 shadow-lg animate-in slide-in-from-top-2 text-xs font-semibold">
+          <a
+            href="#shop"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-2 py-2 px-2.5 rounded-lg bg-blue-50 text-scot-blue font-bold"
+          >
+            <ShoppingBag className="w-3.5 h-3.5" />
+            Solar & Battery Shop
+          </a>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               onScrollToCalculator();
             }}
-            className="w-full text-left py-2 px-2.5 rounded-lg hover:bg-blue-50 text-scot-blue flex items-center gap-2"
+            className="w-full text-left py-2 px-2.5 rounded-lg hover:bg-slate-50 text-slate-700 flex items-center gap-2"
           >
             <Zap className="w-3.5 h-3.5 text-amber-500" />
             Solar Calculator
@@ -165,6 +187,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, onScrollToCalc
           </a>
 
           <div className="pt-2 border-t border-slate-100 flex items-center gap-2">
+            <a
+              href="#shop"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 px-3 text-center font-bold text-scot-blue bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-center gap-1.5"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" /> Shop
+            </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -176,9 +205,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, onScrollToCalc
             </button>
             <a
               href="tel:08004880214"
-              className="py-2 px-3 text-center font-bold text-scot-blue bg-blue-50 rounded-lg flex items-center justify-center gap-1.5 shrink-0"
+              className="py-2 px-2.5 text-center font-bold text-slate-700 bg-slate-100 rounded-lg flex items-center justify-center gap-1 shrink-0"
+              title="Call Free"
             >
-              <Phone className="w-3.5 h-3.5" /> 0800 488 0214
+              <Phone className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>
@@ -186,4 +216,3 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, onScrollToCalc
     </header>
   );
 };
-

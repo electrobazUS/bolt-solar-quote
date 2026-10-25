@@ -6,6 +6,7 @@ import { SolarCalculator } from './components/Calculator';
 import { ScottishGrants } from './components/ScottishGrants';
 import { ScottishWeatherSection } from './components/ScottishWeatherSection';
 import { Packages } from './components/Packages';
+import { ShopSection } from './components/ShopSection';
 import { BatteryStorage } from './components/BatteryStorage';
 import { CoverageMap } from './components/CoverageMap';
 import { HowItWorks } from './components/HowItWorks';
@@ -39,7 +40,7 @@ export function App() {
     setIsQuoteModalOpen(true);
   };
 
-  const handleSelectPackage = (packageName: string) => {
+  const handleSelectPackageOrProduct = (name: string) => {
     setIsQuoteModalOpen(true);
   };
 
@@ -70,11 +71,14 @@ export function App() {
         {/* Scottish Government Grants & Loans */}
         <ScottishGrants onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
 
+        {/* Scottish Solar & Hardware Shop Section */}
+        <ShopSection onSelectProduct={handleSelectPackageOrProduct} />
+
         {/* Scottish Weather Explainer */}
         <ScottishWeatherSection />
 
         {/* Curated Turnkey Packages */}
-        <Packages onSelectPackage={handleSelectPackage} />
+        <Packages onSelectPackage={handleSelectPackageOrProduct} />
 
         {/* Battery Storage & Off-peak Tariffs */}
         <BatteryStorage onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
